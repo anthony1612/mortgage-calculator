@@ -1,35 +1,33 @@
 package gui;
 
-import util.PlaceholderTextField;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class MortgageCalculator extends JFrame {
     private JButton calculateButton;
-    private PlaceholderTextField loanAmountField;
-    private PlaceholderTextField interestRateField;
-    private PlaceholderTextField loanDurationField;
+    private TextField loanAmountField;
+    private TextField interestRateField;
+    private TextField loanDurationField;
     private JLabel output;
 
     public MortgageCalculator() {
         this.setLayout(new GridLayout(5, 1, 10, 10));
 
-        this.loanAmountField = new PlaceholderTextField();
-        this.loanAmountField.setPlaceholder("Principle Loan Amount");
+        this.loanAmountField = new TextField();
 
-        this.interestRateField = new PlaceholderTextField();
-        this.interestRateField.setPlaceholder("Interest Rate (%)");
+        this.interestRateField = new TextField();
 
-        this.loanDurationField = new PlaceholderTextField();
-        this.loanDurationField.setPlaceholder("Loan Duration (Years)");
+        this.loanDurationField = new TextField();
 
         this.calculateButton = new JButton("Calculate");
 
         this.output = new JLabel();
 
+        this.add(new JLabel("Principle Loan Amount"));
         this.add(this.loanAmountField);
+        this.add(new JLabel("Interest Rate (Years)"));
         this.add(this.interestRateField);
+        this.add(new JLabel("Loan Duration (Years)"));
         this.add(this.loanDurationField);
         this.add(this.calculateButton);
         this.add(output);
@@ -62,8 +60,8 @@ public class MortgageCalculator extends JFrame {
     }
 
     private static double calculateMonthlyPayment (int loanAmount, double interestRate, int durationInYears) {
-        var numerator = loanAmount * (interestRate/12);
-        var denominator = 1 - Math.pow((1 + interestRate/12), -12*durationInYears);
+        double numerator = loanAmount * (interestRate/12);
+        double denominator = 1 - Math.pow((1 + interestRate/12), -12*durationInYears);
         return numerator/denominator;
     }
 }
