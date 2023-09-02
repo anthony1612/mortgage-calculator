@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.text.Document;
 import java.awt.*;
 
+//Copied and pasted from https://stackoverflow.com/questions/16213836/java-swing-jtextfield-set-placeholder
 public class PlaceholderTextField extends JTextField {
     private String placeholder;
 
